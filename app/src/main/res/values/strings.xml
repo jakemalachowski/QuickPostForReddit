@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Quick Post for Reddit</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="selectPicBt">Select Picture</string>
+    <string name="subredditTvTitle">Subreddit:   /r/</string>
+    <string name="subredditExampleHint">pics</string>
+    <string name="postTitleTV">Title: </string>
+    <string name="postBtText">Post Picture</string>
+    <string name="title_activity_oauth_view">OAuthView</string>
+
+</resources>
