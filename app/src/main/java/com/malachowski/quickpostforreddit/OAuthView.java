@@ -45,15 +45,15 @@ public class OAuthView extends Activity {
 
     }
 
-/*    @Override
+    @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
-        if (url.startsWith(RedditAccountManager.REDIRECT_URI)) {
+        if (url.startsWith(OAUTH_REDIRECT)) {
             Uri uri = Uri.parse(url);
 
             String state = uri.getQueryParameter("state");
 
-            if (state != null && state.equals(randomString)) {
+            if (state != null && state.equals(Constants)) {
                 String error = uri.getQueryParameter("error");
 
                 if (error != null && error.length() > 0) {
@@ -75,7 +75,7 @@ public class OAuthView extends Activity {
         return false;
     }
 };
-*/
+
 
 
 class LoginTask extends AsyncTask<Uri, String, Boolean> {

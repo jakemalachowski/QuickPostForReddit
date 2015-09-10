@@ -1,0 +1,25 @@
+{
+    "timings": [
+        {
+            "type": "ProcessAndroidResources",
+            "timeMs": 2956,
+            "count": 2
+        },
+        {
+            "type": "MergeResources",
+            "timeMs": 12539,
+            "count": 2
+        },
+        {
+            "type": "Total",
+            "timeMs": 24681,
+            "count": 1
+        },
+        {
+            "type": "JrebelPinResidsTask",
+            "timeMs": 1015,
+            "count": 1
+        }
+    ],
+    "capturedAt": 1441730937971
+}

@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -23,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".OAuthView"
+            android:name=".Reddit.OAuthView"
             android:label="OAuthView" >
         </activity>
     </application>

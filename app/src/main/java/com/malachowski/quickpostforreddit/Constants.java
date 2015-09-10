@@ -1,13 +1,13 @@
 package com.malachowski.quickpostforreddit;
 
-import android.content.Context;
-import android.provider.Settings;
+import com.malachowski.quickpostforreddit.Utils.SessionIdentifierGenerator;
 
 /**
  * Created by Jacob on 3/17/2015.
  */
 
-public class Constants {
+public class Constants
+{
     /*
       Logging flag
      */
@@ -21,19 +21,26 @@ public class Constants {
     public static final String MY_IMGUR_CLIENT_ID = "3c7c7df5232ecac";
 
     /*
-      Redirect URL for android.
-     */
-    public static final String MY_IMGUR_REDIRECT_URL = "http://android";
-
-    /*
       Client Auth
      */
-    public static String getClientAuth(){
+
+    //Imgur Constants
+    public static String getClientAuth()
+    {
         return "Client-ID " + MY_IMGUR_CLIENT_ID;
     }
 
     public static String uploadURL = "https://api.imgur.com/3/image";
 
+    //Reddit Constants
+    public static String OAUTH_REDIRECT = "http://www.quickpostforreddit.com";
+    public static final String CLIENT_ID = "mJeA6das-uB1iw";
+    public static final String randString = new SessionIdentifierGenerator().nextSessionId(); //generate random code for Reddit oAuth
+    public static final String redditBaseURL = "https://oauth.reddit.com";
+
+    //Intent Codes
+    public static final int RESULT_LOAD_IMAGE = 1;
+    public static final int RESULT_LOGIN = 2;
 
 }
 

@@ -14,7 +14,8 @@ import retrofit.mime.TypedFile;
  * Created by Jacob on 3/17/2015.
  */
 
-public class UploadService extends AsyncTask<Void, Void, Void> {
+public class UploadService extends AsyncTask<Void, Void, Void>
+{
     public final static String TAG = UploadService.class.getSimpleName();
 
 
@@ -23,9 +24,8 @@ public class UploadService extends AsyncTask<Void, Void, Void> {
     private File image;
 
 
-
-
-    public UploadService(Upload upload){
+    public UploadService(Upload upload)
+    {
         this.image = upload.image;
         this.title = upload.title;
         this.description = upload.description;
@@ -37,12 +37,16 @@ public class UploadService extends AsyncTask<Void, Void, Void> {
 
     }
 
-    @Override protected void onPreExecute() {
+    @Override
+    protected void onPreExecute()
+    {
         super.onPreExecute();
 //        notificationHelper.createUploadingNotification();
     }
 
-    @Override protected Void doInBackground(Void... params) {
+    @Override
+    protected Void doInBackground(Void... params)
+    {
         //if(NetworkUtils.isConnected(activity)) {
         //    if (NetworkUtils.connectionReachable()) {
 
@@ -51,32 +55,33 @@ public class UploadService extends AsyncTask<Void, Void, Void> {
          */
 
 
-                RestAdapter imgurAdapter = new RestAdapter.Builder()
-                        .setEndpoint(ImgurAPI.server)
-                        .build();
+        RestAdapter imgurAdapter = new RestAdapter.Builder()
+                .setEndpoint(ImgurAPI.server)
+                .build();
 
         /*
           Set rest adapter logging if we're already logging
          */
 
-                if(Constants.LOGGING)
-                    imgurAdapter.setLogLevel(RestAdapter.LogLevel.FULL);
+        if (Constants.LOGGING)
+            imgurAdapter.setLogLevel(RestAdapter.LogLevel.FULL);
 
         /*
           Upload image, get response for image
          */
-                try {
+        try
+        {
 
 
-                    response = imgurAdapter.create(ImgurAPI.class)
-                            .postImage(
-                                    Constants.getClientAuth(), title, description, albumId, null, new TypedFile("image/*", image)
-                            );
+            response = imgurAdapter.create(ImgurAPI.class)
+                    .postImage(
+                            Constants.getClientAuth(), title, description, albumId, null, new TypedFile("image/*", image)
+                    );
 
-                } catch (NullPointerException e)
-                {
-                    e.printStackTrace();
-                }
+        } catch (NullPointerException e)
+        {
+            e.printStackTrace();
+        }
         return null;
     }
 }
