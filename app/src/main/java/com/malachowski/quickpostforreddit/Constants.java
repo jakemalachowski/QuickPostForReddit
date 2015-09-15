@@ -36,7 +36,8 @@ public class Constants
     public static String OAUTH_REDIRECT = "http://www.quickpostforreddit.com";
     public static final String CLIENT_ID = "mJeA6das-uB1iw";
     public static final String randString = new SessionIdentifierGenerator().nextSessionId(); //generate random code for Reddit oAuth
-    public static final String redditBaseURL = "https://oauth.reddit.com";
+//    public static final String redditBaseURL = "https://oauth.reddit.com";
+    public static final String redditBaseURL = "https://www.reddit.com";
 
     //Intent Codes
     public static final int RESULT_LOAD_IMAGE = 1;

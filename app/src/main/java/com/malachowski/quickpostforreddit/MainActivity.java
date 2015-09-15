@@ -44,19 +44,18 @@ public class MainActivity extends Activity
     private Upload upload;
 
 
-    //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //if (prefs.getString("authCode", "none").equals("none"))
-        //{
-            Intent i = new Intent(getApplicationContext(), OAuthView.class);
-            startActivityForResult(i, Constants.RESULT_LOGIN);
-        //}
+        //TODO: Skip the authorization proccess if the app already has an auth token
+        //Launching it every time the app is started for debugging purposes
+
+        Intent oAuthIntent = new Intent(getApplicationContext(), OAuthView.class);
+        startActivityForResult(oAuthIntent, Constants.RESULT_LOGIN);
+
 
         upload = new Upload();
 
@@ -69,6 +68,7 @@ public class MainActivity extends Activity
         thumbnail = (ImageView) findViewById(R.id.quickPostImage);
 
 
+        //Button to select the picture to upload
         btSelectPic.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -80,6 +80,7 @@ public class MainActivity extends Activity
             }
         });
 
+        //Button to upload picture to Imgur and post to Reddit
         btSubmit.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -107,7 +108,7 @@ public class MainActivity extends Activity
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
 
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == Constants.RESULT_LOAD_IMAGE)
         {
@@ -122,7 +123,7 @@ public class MainActivity extends Activity
                 return;
             }
 
-            String fullPath = getRealPathFromURI(this, uri);
+            String fullPath = GeneralUtils.getRealPathFromURI(this, uri);
             upload.image = new File(fullPath);
 
             if (resultCode == RESULT_OK)
@@ -167,25 +168,4 @@ public class MainActivity extends Activity
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-    public String getRealPathFromURI(Context context, Uri contentUri)
-    {
-        Cursor cursor = null;
-        try
-        {
-            String[] proj = {MediaStore.Images.Media.DATA};
-            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        } finally
-        {
-            if (cursor != null)
-            {
-                cursor.close();
-            }
-        }
-    }
-
 }

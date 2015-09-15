@@ -30,26 +30,17 @@ public class UploadService extends AsyncTask<Void, Void, Void>
         this.title = upload.title;
         this.description = upload.description;
         this.albumId = upload.albumId;
-
-
-        Log.d("Submit", "In uploadService");
-
-
     }
 
     @Override
     protected void onPreExecute()
     {
         super.onPreExecute();
-//        notificationHelper.createUploadingNotification();
     }
 
     @Override
     protected Void doInBackground(Void... params)
     {
-        //if(NetworkUtils.isConnected(activity)) {
-        //    if (NetworkUtils.connectionReachable()) {
-
         /*
           Create rest adapter using our imgur API
          */

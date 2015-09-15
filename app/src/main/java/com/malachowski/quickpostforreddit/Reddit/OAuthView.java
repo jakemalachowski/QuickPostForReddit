@@ -28,6 +28,8 @@ import org.json.JSONObject;
 import java.net.CookieManager;
 import java.util.HashMap;
 
+//Class to open a webview in order to allow the user to authorize
+//the app to post on behalf of the user
 
 public class OAuthView extends Activity
 {
@@ -47,6 +49,10 @@ public class OAuthView extends Activity
         wv = (WebView) findViewById(R.id.oAuthWebView);
         wv.setWebViewClient(new WebViewClient()
         {
+
+            //Take over when the user finishes authorizing the app and is
+            //redirected to OAUTH_REDIRECT
+
             @Override
             public boolean shouldOverrideUrlLoading(WebView wv, String url)
             {
@@ -74,6 +80,7 @@ public class OAuthView extends Activity
                             }
                         }
 
+                        //Go back to MainActivity with authorization code
                         Intent resultIntent = getIntent();
                         resultIntent.putExtra("authCode", uri.getQueryParameter("code"));
 
@@ -88,7 +95,7 @@ public class OAuthView extends Activity
             }
         });
 
-        wv.loadUrl("https://www.reddit.com/api/v1/authorize.compact?client_id=" + Constants.CLIENT_ID + "&response_type=code&" +
+        wv.loadUrl("https://www.reddit.com/api/v1/authorize.compact?client_id=" + Constants.CLIENT_ID + "&response_type=token&" +
                 "state=" + Constants.randString + "&redirect_uri=" + Constants.OAUTH_REDIRECT + "&duration=permanent&scope=identity,submit");
 
 
