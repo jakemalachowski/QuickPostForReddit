@@ -35,14 +35,11 @@ public class GeneralUtils
         //TODO Set the proper orientation of the picture based on width and height.
         if (returnBitmap.getWidth() > returnBitmap.getHeight())
         {
-
-            Log.d("ifelse", "Called if");
             int nh = (int) (returnBitmap.getHeight() * (800.0 / returnBitmap.getWidth()));
             Bitmap scaled = Bitmap.createScaledBitmap(returnBitmap, 800, nh, true);
             return scaled;
         } else
         {
-            Log.d("ifelse", "Called else");
             int nh = (returnBitmap.getWidth() * (800 / returnBitmap.getHeight()));
             Bitmap scaled = Bitmap.createScaledBitmap(returnBitmap, 800, nh, true);
             return scaled;

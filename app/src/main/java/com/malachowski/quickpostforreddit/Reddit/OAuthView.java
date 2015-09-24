@@ -1,32 +1,16 @@
 package com.malachowski.quickpostforreddit.Reddit;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
-
 import com.malachowski.quickpostforreddit.Constants;
 import com.malachowski.quickpostforreddit.R;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.net.CookieManager;
-import java.util.HashMap;
 
 //Class to open a webview in order to allow the user to authorize
 //the app to post on behalf of the user
@@ -35,9 +19,6 @@ public class OAuthView extends Activity
 {
 
     WebView wv;
-    WebViewClient wvclient;
-    Activity mActivity;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -58,7 +39,12 @@ public class OAuthView extends Activity
             {
                 if (url.startsWith(Constants.OAUTH_REDIRECT))
                 {
-                    Uri uri = Uri.parse(url);
+                    //replace the '#' with a '?' because it was breaking the parsing functionality
+                    StringBuilder sb = new StringBuilder(url);
+                    sb.replace(sb.indexOf("#"), sb.indexOf("#") + 1, "?");
+                    Log.d("Check Replacement", sb.toString());
+
+                    Uri uri = Uri.parse(sb.toString());
 
                     String state = uri.getQueryParameter("state");
 
@@ -82,8 +68,7 @@ public class OAuthView extends Activity
 
                         //Go back to MainActivity with authorization code
                         Intent resultIntent = getIntent();
-                        resultIntent.putExtra("authCode", uri.getQueryParameter("code"));
-
+                        resultIntent.putExtra("authCode", uri.getQueryParameter("access_token"));
                         setResult(RESULT_OK, resultIntent);
                         finish();
 
@@ -91,13 +76,10 @@ public class OAuthView extends Activity
                     }
                 }
                 return false;
-
             }
         });
 
         wv.loadUrl("https://www.reddit.com/api/v1/authorize.compact?client_id=" + Constants.CLIENT_ID + "&response_type=token&" +
-                "state=" + Constants.randString + "&redirect_uri=" + Constants.OAUTH_REDIRECT + "&duration=permanent&scope=identity,submit");
-
-
+                "state=" + Constants.randString + "&redirect_uri=" + Constants.OAUTH_REDIRECT + "&scope=identity,submit");
     }
 }

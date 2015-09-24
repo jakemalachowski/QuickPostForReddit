@@ -1,15 +1,9 @@
 package com.malachowski.quickpostforreddit;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.text.InputType;
 import android.util.Log;
@@ -19,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.malachowski.quickpostforreddit.Imgur.Upload;
 import com.malachowski.quickpostforreddit.Imgur.UploadService;
@@ -31,8 +24,6 @@ import java.io.File;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
-import javax.xml.datatype.Duration;
 
 public class MainActivity extends Activity
 {
@@ -50,7 +41,7 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TODO: Skip the authorization proccess if the app already has an auth token
+        //TODO: Skip the authorization proccess if the app already has a valid auth token
         //Launching it every time the app is started for debugging purposes
 
         Intent oAuthIntent = new Intent(getApplicationContext(), OAuthView.class);
@@ -139,7 +130,6 @@ public class MainActivity extends Activity
         } else if (requestCode == Constants.RESULT_LOGIN)
         {
             String authCode = data.getStringExtra("authCode");
-            Toast.makeText(this, authCode, Toast.LENGTH_LONG).show();
 
             RedditUtils redditUtils = new RedditUtils();
 
