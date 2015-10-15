@@ -4,6 +4,12 @@ Quick Post for Reddit is an Android app designed to simplify the process of subm
 The app allows you to select a picture, title, and subreddit and automatically posts the picture to Imgur, 
 then Reddit, all at the press of a button.
 
-The app is still a work in progress.  It currently posts the images to Imgur. The next step is get users'
-Reddit credientials view Reddit's oAuth process, along with submitting the post on behalf of the user.
-The user interface will also need to be improved.
+The app is still a work in progress.
+
+###To Do
+
+<ul>
+<li> Make a progress icon for when the image is being uploaded to Imgur and posted to Reddit </li>
+<li> Make the user's default Reddit browser automatically launch once the image is posted. </li>
+<li> Develop a better user interface </li>
+</ul>
