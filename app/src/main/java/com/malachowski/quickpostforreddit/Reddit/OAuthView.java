@@ -42,7 +42,6 @@ public class OAuthView extends Activity
                     //replace the '#' with a '?' because it was breaking the parsing functionality
                     StringBuilder sb = new StringBuilder(url);
                     sb.replace(sb.indexOf("#"), sb.indexOf("#") + 1, "?");
-                    Log.d("Check Replacement", sb.toString());
 
                     Uri uri = Uri.parse(sb.toString());
 

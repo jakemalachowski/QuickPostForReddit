@@ -43,7 +43,7 @@
     "storeFile": "C:\\Users\\Jacob\\.android\\debug.keystore",
     "resourcePackagePath": "C:\\Users\\Jacob\\github\\QuickPostforReddit\\app\\build\\intermediates\\res\\resources-debug.ap_",
     "compileSdkVersion": "android-21",
-    "buildSystemVersion": "2.4",
+    "buildSystemVersion": "2.8",
     "layoutVersion": 7,
     "applicationId": "com.malachowski.quickpostforreddit",
     "originalApplicationId": "com.malachowski.quickpostforreddit",
@@ -64,8 +64,8 @@
         "C:\\Users\\Jacob\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.retrofit\\retrofit\\1.9.0\\a681c044244d9fc375198588297a39ba78028423\\retrofit-1.9.0.jar",
         "C:\\Users\\Jacob\\.gradle\\caches\\modules-2\\files-2.1\\com.google.code.gson\\gson\\2.3.1\\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\\gson-2.3.1.jar",
         "C:\\Users\\Jacob\\github\\QuickPostforReddit\\app\\build\\intermediates\\exploded-aar\\com.android.support\\support-v4\\22.1.1\\jars\\libs\\internal_impl-22.1.1.jar",
-        "C:\\Users\\Jacob\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.okio\\okio\\1.3.0\\1b355f73402020c5a0dcca58affc3ec3dfeabac1\\okio-1.3.0.jar",
         "C:\\Users\\Jacob\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.dagger\\dagger\\1.2.1\\78f96ef00fceee95802930944b1fc4e0e1f9aacc\\dagger-1.2.1.jar",
+        "C:\\Users\\Jacob\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.okio\\okio\\1.3.0\\1b355f73402020c5a0dcca58affc3ec3dfeabac1\\okio-1.3.0.jar",
         "C:\\Users\\Jacob\\AppData\\Local\\Android\\Sdk\\extras\\android\\m2repository\\com\\android\\support\\support-annotations\\22.1.1\\support-annotations-22.1.1.jar"
     ]
 }

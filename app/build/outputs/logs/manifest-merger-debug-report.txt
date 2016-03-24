@@ -61,7 +61,7 @@ ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest
 activity#com.malachowski.quickpostforreddit.Reddit.OAuthView
 ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml:24:9-27:20
 	android:label
-		ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml:26:13-38
+		ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml:26:13-51
 	android:name
 		ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml:25:13-45
 uses-sdk

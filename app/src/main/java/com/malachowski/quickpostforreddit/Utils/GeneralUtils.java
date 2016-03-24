@@ -40,8 +40,8 @@ public class GeneralUtils
             return scaled;
         } else
         {
-            int nh = (returnBitmap.getWidth() * (800 / returnBitmap.getHeight()));
-            Bitmap scaled = Bitmap.createScaledBitmap(returnBitmap, 800, nh, true);
+            int nw = (int) (returnBitmap.getWidth() * (800.0 / returnBitmap.getHeight()));
+            Bitmap scaled = Bitmap.createScaledBitmap(returnBitmap, nw, 800, true);
             return scaled;
         }
     }

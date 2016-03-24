@@ -55,6 +55,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/subredditET"
+                    android:maxLines="1"
                     android:hint="@string/subredditExampleHint"/>
         </LinearLayout>
 
@@ -74,7 +75,9 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/titleET"/>
+                android:maxLines="1"
+                android:id="@+id/titleET"
+                android:lines="1"/>
         </LinearLayout>
 
         <Button
