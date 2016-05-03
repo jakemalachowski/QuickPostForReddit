@@ -75,9 +75,8 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:id="@+id/titleET"
-                android:lines="1"/>
+                android:inputType="textMultiLine"/>
         </LinearLayout>
 
         <Button
@@ -93,4 +92,3 @@
 </ScrollView>
 
 </LinearLayout>
-<!-- From: file:/C:/Users/Jacob/github/QuickPostforReddit/app/src/main/res/layout/activity_main.xml -->

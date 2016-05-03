@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,7 +19,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.gson.JsonParser;
 import com.malachowski.quickpostforreddit.Imgur.ImageResponse;
 import com.malachowski.quickpostforreddit.Imgur.ImgurAPI;
 import com.malachowski.quickpostforreddit.Imgur.Upload;
@@ -34,9 +34,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,7 +42,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import retrofit.RestAdapter;
 import retrofit.mime.TypedFile;
@@ -56,8 +53,8 @@ public class MainActivity extends Activity
     EditText subredditET, titleET;
     ImageView thumbnail;
     String authCode;
-    static ImageResponse response;
 
+    static ImageResponse response;
     private Upload upload;
 
 
@@ -67,12 +64,13 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //TODO: Skip the authorization proccess if the app already has a valid auth token
-        //Launching it every time the app is started for debugging purposes
-
-        Intent oAuthIntent = new Intent(getApplicationContext(), OAuthView.class);
-        startActivityForResult(oAuthIntent, Constants.RESULT_LOGIN);
-
+        SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+        authCode = prefs.getString("authCode", null);
+        if(authCode == null)
+        {
+            Intent oAuthIntent = new Intent(getApplicationContext(), OAuthView.class);
+            startActivityForResult(oAuthIntent, Constants.RESULT_LOGIN);
+        }
 
         upload = new Upload();
 
@@ -82,6 +80,8 @@ public class MainActivity extends Activity
         subredditET.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         titleET = (EditText) findViewById(R.id.titleET);
         thumbnail = (ImageView) findViewById(R.id.quickPostImage);
+
+        subredditET.setText(prefs.getString("subreddit", ""));
 
 
         //Button to select the picture to upload
@@ -156,7 +156,11 @@ public class MainActivity extends Activity
             }
         } else if (requestCode == Constants.RESULT_LOGIN)
         {
+            SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
             authCode = data.getStringExtra("authCode");
+            editor.putString("authCode", authCode);
+            editor.commit();
 
         }
     }
@@ -176,10 +180,6 @@ public class MainActivity extends Activity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings)
-        {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -306,7 +306,7 @@ public class MainActivity extends Activity
 
             try {
                 // Add your data
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                List<NameValuePair> nameValuePairs = new ArrayList<>(2);
                 nameValuePairs.add(new BasicNameValuePair("api_type", "json"));
                 nameValuePairs.add(new BasicNameValuePair("kind", "link"));
                 nameValuePairs.add(new BasicNameValuePair("resubmit", "true"));
@@ -373,6 +373,10 @@ public class MainActivity extends Activity
                     Toast.makeText(getApplicationContext(), error, Toast.LENGTH_LONG).show();
                 } else
                 {
+                    SharedPreferences prefs = getPreferences(MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("subreddit", subreddit);
+                    editor.apply();
                     Uri uri = Uri.parse(url);
                     Intent launchWebLink = new Intent(Intent.ACTION_VIEW);
                     launchWebLink.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

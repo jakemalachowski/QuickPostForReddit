@@ -31,9 +31,6 @@ ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest
 		ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml:8:22-76
 application
 ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml:10:5-28:19
-MERGED from [com.android.support:support-v4:22.1.1] C:\Users\Jacob\github\QuickPostforReddit\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:appcompat-v7:22.1.1] C:\Users\Jacob\github\QuickPostforReddit\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:22.1.1] C:\Users\Jacob\github\QuickPostforReddit\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml:13:9-41
 	android:allowBackup
@@ -66,9 +63,6 @@ ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest
 		ADDED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml:25:13-45
 uses-sdk
 INJECTED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [com.android.support:support-v4:22.1.1] C:\Users\Jacob\github\QuickPostforReddit\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:22.1.1] C:\Users\Jacob\github\QuickPostforReddit\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.1.1\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-v4:22.1.1] C:\Users\Jacob\github\QuickPostforReddit\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Jacob\github\QuickPostforReddit\app\src\main\AndroidManifest.xml
